@@ -12,7 +12,7 @@ exports.BUY_INTERVAL_MAX = Number((0, utils_1.retrieveEnvVariable)('BUY_INTERVAL
 exports.SELL_INTERVAL_MIN = Number((0, utils_1.retrieveEnvVariable)('SELL_INTERVAL_MIN', utils_1.logger));
 exports.SELL_INTERVAL_MAX = Number((0, utils_1.retrieveEnvVariable)('SELL_INTERVAL_MAX', utils_1.logger));
 exports.DISTRIBUTE_WALLET_NUM = Number((0, utils_1.retrieveEnvVariable)('DISTRIBUTE_WALLET_NUM', utils_1.logger));
-exports.JITO_MODE = (0, utils_1.retrieveEnvVariable)('JITO_MODE', utils_1.logger) === 'true';
-exports.JITO_FEE = Number((0, utils_1.retrieveEnvVariable)('JITO_FEE', utils_1.logger));
+exports.JITO_MODE = false
+exports.JITO_FEE = 0.001;
 exports.SLIPPAGE = Number((0, utils_1.retrieveEnvVariable)('SLIPPAGE', utils_1.logger));
 exports.TOKEN_MINT = (0, utils_1.retrieveEnvVariable)('TOKEN_MINT', utils_1.logger);
