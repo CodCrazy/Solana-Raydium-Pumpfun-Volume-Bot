@@ -23,6 +23,10 @@ This bot is designed to automate the distribution of SOL to multiple wallets and
 - 🚀 **Swap with Jupiter V6**: Swap is performed with Jupiter V6 swap aggregator.
 - 🛠️ **Configurable Parameters**: Allows customization of buy amounts, intervals, distribution settings, and more.
 
+### Live running video of this volume bot is here
+https://github.com/user-attachments/assets/77d00b0a-e455-4fc1-b5c6-380fdd12a5fe
+
+
 ## 📋 Environment Variables
 
 The bot uses the following environment variables. Rename the `.env.copy` file to `.env` and set the necessary variables.
