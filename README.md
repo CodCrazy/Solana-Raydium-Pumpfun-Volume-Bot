@@ -17,6 +17,8 @@ Solana volume bot: This bot is designed to automate the distribution of SOL to m
 - ✅ **Sell before gather**: When gathering, if there are tokens left in the wallet, it sells the tokens first and gathers only SOL (the token account rent of 0.00203 SOL is reclaimed).
 - ✅ **More buys than sells**: It randomly buys twice with SOL in the wallet and sells all tokens after some time, making the number of buys twice as many as sells, thus creating more buy pressure.
 
+## This release version is for demo, so buy and sell amount with SOL is fixed at 0.003SOL, you can ask me for a gather script if you get to need that
+
 ## 🌟 Features
 - ⚙️ **Automated SOL Distribution**: Distributes SOL to new wallets.
 - 🔄 **Endless Buy and Sell Swaps**: Performs simultaneous buy and sell transactions.
