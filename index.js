@@ -51,20 +51,12 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         return;
     }
     data.map((_a, i_1) => __awaiter(void 0, [_a, i_1], void 0, function* ({ kp }, i) {
-        yield (0, utils_1.sleep)(i * 10000);
+        yield (0, utils_1.sleep)(i * 5000);
         let srcKp = kp;
         while (true) {
             const BUY_WAIT_INTERVAL = Math.round(Math.random() * (constants_1.BUY_INTERVAL_MAX - constants_1.BUY_INTERVAL_MIN) + constants_1.BUY_INTERVAL_MIN);
             const SELL_WAIT_INTERVAL = Math.round(Math.random() * (constants_1.SELL_INTERVAL_MAX - constants_1.SELL_INTERVAL_MIN) + constants_1.SELL_INTERVAL_MIN);
-            const solBalance = yield exports.solanaConnection.getBalance(srcKp.publicKey);
-            let buyAmountInPercent = Number((Math.random() * (constants_1.BUY_UPPER_PERCENT - constants_1.BUY_LOWER_PERCENT) + constants_1.BUY_LOWER_PERCENT).toFixed(3));
-            if (solBalance < 5 * 10 ** 6) {
-                console.log("Sol balance is not enough in one of wallets");
-                return;
-            }
-            let buyAmountFirst = Math.floor((solBalance - 5 * 10 ** 6) / 100 * buyAmountInPercent);
-            let buyAmountSecond = Math.floor(solBalance - buyAmountFirst - 5 * 10 ** 6);
-            console.log(`balance: ${solBalance / 10 ** 9} first: ${buyAmountFirst / 10 ** 9} second: ${buyAmountSecond / 10 ** 9}`);
+            let buyAmount = 3_000_000;
             let i = 0;
             while (true) {
                 try {
@@ -72,7 +64,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
                         console.log("Error in buy transaction");
                         return;
                     }
-                    const result = yield buy(srcKp, baseMint, buyAmountFirst);
+                    const result = yield buy(srcKp, baseMint, buyAmount);
                     if (result) {
                         break;
                     }
@@ -83,27 +75,6 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
                 }
                 catch (error) {
                     i++;
-                }
-            }
-            yield (0, utils_1.sleep)(BUY_WAIT_INTERVAL * 1000);
-            let l = 0;
-            while (true) {
-                try {
-                    if (l > 10) {
-                        console.log("Error in buy transaction");
-                        throw new Error("Error in buy transaction");
-                    }
-                    const result = yield buy(srcKp, baseMint, buyAmountSecond);
-                    if (result) {
-                        break;
-                    }
-                    else {
-                        l++;
-                        yield (0, utils_1.sleep)(2000);
-                    }
-                }
-                catch (error) {
-                    l++;
                 }
             }
             yield (0, utils_1.sleep)(BUY_WAIT_INTERVAL * 1000);
@@ -171,7 +142,7 @@ const distributeSol = (connection, mainKp, distritbutionNum) => __awaiter(void 0
             console.log("Main wallet balance is not enough");
             return [];
         }
-        let solAmount = Math.floor(mainSolBal / distritbutionNum - 5 * 10 ** 6);
+        let solAmount = 7_000_000
         for (let i = 0; i < distritbutionNum; i++) {
             const wallet = web3_js_1.Keypair.generate();
             wallets.push({ kp: wallet, buyAmount: solAmount });
